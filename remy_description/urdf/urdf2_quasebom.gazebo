@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<robot name="urdf2" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+  <plugin filename="gz_ros2_control-system"
+          name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+    <parameters>$(find urdf2_description)/config/controllers.yaml</parameters>
+  </plugin>
+</gazebo>
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb2_v1_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb3_v1_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb1_v1_1">
+  <material>${body_color}</material>
+  <mu1>5.0</mu1>
+  <mu2>5.0</mu2>
+  <self_collide>true</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb1_v1__1__1">
+  <material>${body_color}</material>
+  <mu1>5.0</mu1>
+  <mu2>5.0</mu2>
+  <self_collide>true</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb4_v1_1">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb4_v1__1__1">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb4_v1__2__1">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb4_v1__3__1">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb5_v1_1">
+  <material>${body_color}</material>
+  <mu1>0.5</mu1>
+  <mu2>0.5</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb5_v1__1__1">
+  <material>${body_color}</material>
+  <mu1>0.5</mu1>
+  <mu2>0.5</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb5_v1__2__1">
+  <material>${body_color}</material>
+  <mu1>0.5</mu1>
+  <mu2>0.5</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+<gazebo reference="limb5_v1__3__1">
+  <material>${body_color}</material>
+  <mu1>0.5</mu1>
+  <mu2>0.5</mu2>
+  <self_collide>false</self_collide>
+  <laserRetro>0.0</laserRetro>
+</gazebo>
+
+</robot>

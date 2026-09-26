@@ -1,0 +1,410 @@
+<?xml version="1.0" ?>
+<robot name="urdf2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find urdf2_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find urdf2_description)/urdf/urdf2.trans" />
+<xacro:include filename="$(find urdf2_description)/urdf/urdf2.gazebo" />
+
+
+<link name="base_footprint"/>
+
+<joint name="base_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<!-- ===================== BASE ===================== -->
+<link name="base_link">
+  <inertial>
+    <origin xyz="-4.812698831464578e-06 -0.005412827793001517 0.4978610665312513" rpy="0 0 0"/>
+    <mass value="28.290295373190588"/>
+    <inertia ixx="4.002643" iyy="4.211285" izz="0.944023" ixy="-5e-06" iyz="-0.046107" ixz="-0.000269"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- Colisão simplificada: caixa representando o corpo principal -->
+  <collision>
+    <origin xyz="0 0 0.6" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.45 0.40 1.0"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ===================== LASER ===================== -->
+<link name="laser">
+  <inertial>
+    <origin xyz="-0.02149999999999923 -0.023058640719597706 0.016872379763677364" rpy="0 0 0"/>
+    <mass value="0.8145811794632783"/>
+    <inertia ixx="0.000285" iyy="0.000285" izz="0.000359" ixy="0.0" iyz="-7e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0215 0.190948 -0.125363" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- Colisão simplificada: cilindro pequeno -->
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.04" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ===================== ESTRUTURA SUPERIOR (limb3) ===================== -->
+<link name="limb3_v1_1">
+  <inertial>
+    <origin xyz="-0.03254586377879881 -0.01226716800921993 4.8104092953416e-07" rpy="0 0 0"/>
+    <mass value="0.3971989992607859"/>
+    <inertia ixx="4.1e-05" iyy="0.000252" izz="0.000253" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0325 -0.0265 -1.500001" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb3_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- Colisão simplificada: caixa -->
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.12 0.10 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ===================== RODAS PRINCIPAIS (limb1) ===================== -->
+<link name="limb1_v1_1">
+  <inertial>
+    <origin xyz="0.030385677711365494 -7.613557163816786e-08 2.0917380505469652e-07" rpy="0 0 0"/>
+    <mass value="7.44897303914306"/>
+    <inertia ixx="0.021214" iyy="0.012207" izz="0.012207" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.2235 -0.0 -0.074" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- Colisão simplificada: cilindro (roda) -->
+  <collision>
+    <origin xyz="0.025 0 -0.005" rpy="0 1.5708 0"/>
+    <geometry>
+      <cylinder radius="0.074" length="0.06"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb1_v1__1__1">
+  <inertial>
+    <origin xyz="-0.030385677711365383 7.613556716768832e-08 2.091738051795966e-07" rpy="0 0 0"/>
+    <mass value="7.44897303914306"/>
+    <inertia ixx="0.021214" iyy="0.012207" izz="0.012207" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.2245 0.0 -0.074" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- Colisão simplificada: cilindro (roda) -->
+  <collision>
+    <origin xyz="-0.025 0 -0.005" rpy="0 1.5708 0"/>
+    <geometry>
+      <cylinder radius="0.074" length="0.06"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ===================== RODAS OMNI - SUPORTE (limb4) ===================== -->
+<!-- Colisão simplificada: esfera pequena para cada suporte giratório -->
+<link name="limb4_v1_1">
+  <inertial>
+    <origin xyz="2.4147350785597155e-15 -0.014044493135182023 -0.025676381178734692" rpy="0 0 0"/>
+    <mass value="0.056127153093212874"/>
+    <inertia ixx="3.7e-05" iyy="4.7e-05" izz="4e-05" ixy="-0.0" iyz="-5e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.09 0.12 -0.093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.03" length="0.025"/>
+    </geometry>
+  </collision>  
+</link>
+
+<link name="limb4_v1__1__1">
+  <inertial>
+    <origin xyz="2.4147350785597155e-15 -0.014044493135182023 -0.02567638117873454" rpy="0 0 0"/>
+    <mass value="0.056127153093212874"/>
+    <inertia ixx="3.7e-05" iyy="4.7e-05" izz="4e-05" ixy="-0.0" iyz="-5e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.09 -0.12 -0.093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.03" length="0.025"/>
+    </geometry>
+  </collision>  
+</link>
+
+<link name="limb4_v1__2__1">
+  <inertial>
+    <origin xyz="2.4147350785597155e-15 -0.014044493135182023 -0.025676381178734553" rpy="0 0 0"/>
+    <mass value="0.056127153093212874"/>
+    <inertia ixx="3.7e-05" iyy="4.7e-05" izz="4e-05" ixy="-0.0" iyz="-5e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.09 -0.12 -0.093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.03" length="0.025"/>
+    </geometry>
+  </collision>  
+</link>
+
+<link name="limb4_v1__3__1">
+  <inertial>
+    <origin xyz="2.4147350785597155e-15 -0.014044493135182023 -0.025676381178734664" rpy="0 0 0"/>
+    <mass value="0.056127153093212874"/>
+    <inertia ixx="3.7e-05" iyy="4.7e-05" izz="4e-05" ixy="-0.0" iyz="-5e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.09 0.12 -0.093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.03" length="0.025"/>
+    </geometry>
+  </collision>  
+</link>
+
+<!-- ===================== RODAS OMNI - ROLOS (limb5) ===================== -->
+<!-- Colisão simplificada: cilindro pequeno para cada rolo -->
+<link name="limb5_v1_1">
+  <inertial>
+    <origin xyz="-0.021999999672172046 -2.3592239273284576e-15 -2.5049406993105094e-15" rpy="0 0 0"/>
+    <mass value="1.4096334164897137"/>
+    <inertia ixx="0.00094" iyy="0.000666" izz="0.000666" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.068 0.145 -0.0331" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02 0.0 0.0" rpy="1.5708 0 1.5708"/>
+    <geometry>
+      <cylinder radius="0.038" length="0.044"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb5_v1__1__1">
+  <inertial>
+    <origin xyz="-0.021999999672172033 -2.3592239273284576e-15 -2.491062911502695e-15" rpy="0 0 0"/>
+    <mass value="1.4096334164897137"/>
+    <inertia ixx="0.00094" iyy="0.000666" izz="0.000666" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.112 0.145 -0.0331" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02 0.0 0.0" rpy="1.5708 0 1.5708"/>
+    <geometry>
+      <cylinder radius="0.038" length="0.044"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb5_v1__2__1">
+  <inertial>
+    <origin xyz="-0.021999999672172033 -2.345346139520643e-15 -2.366162821232365e-15" rpy="0 0 0"/>
+    <mass value="1.4096334164897137"/>
+    <inertia ixx="0.00094" iyy="0.000666" izz="0.000666" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.112 -0.095 -0.0331" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02 0.0 0.0" rpy="1.5708 0 1.5708"/>
+    <geometry>
+      <cylinder radius="0.038" length="0.044"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb5_v1__3__1">
+  <inertial>
+    <origin xyz="-0.021999999672172046 -2.345346139520643e-15 -2.3800406090401793e-15" rpy="0 0 0"/>
+    <mass value="1.4096334164897137"/>
+    <inertia ixx="0.00094" iyy="0.000666" izz="0.000666" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.068 -0.095 -0.0331" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02 0.0 0.0" rpy="1.5708 0 1.5708"/>
+    <geometry>
+      <cylinder radius="0.038" length="0.044"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<!-- ===================== JOINTS (sem alteração) ===================== -->
+
+<joint name="laser_joint" type="fixed">
+  <origin xyz="0.0215 -0.190948 0.125363" rpy="0 0 -1.5708"/>
+  <parent link="base_link"/>
+  <child link="laser"/>
+</joint>
+
+<joint name="rig3" type="fixed">
+  <origin xyz="0.0325 0.0265 1.500001" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb3_v1_1"/>
+</joint>
+
+<joint name="rev1" type="continuous">
+  <origin xyz="0.2235 0.0 0.074" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb1_v1_1"/>
+  <axis xyz="1 0 0" rpy="0 0 0"/>
+</joint>
+
+<joint name="rev2" type="continuous">
+  <origin xyz="-0.2245 0.0 0.074" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb1_v1__1__1"/>
+  <axis xyz="1 0 0" rpy="0 0 0"/>
+</joint>
+
+<joint name="rev11" type="continuous">
+  <origin xyz="-0.09 -0.12 0.093" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb4_v1_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="rev12" type="continuous">
+  <origin xyz="0.09 0.12 0.093" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb4_v1__1__1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="rev13" type="continuous">
+  <origin xyz="-0.09 0.12 0.093" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb4_v1__2__1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="rev14" type="continuous">
+  <origin xyz="0.09 -0.12 0.093" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb4_v1__3__1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="rev15" type="continuous">
+  <origin xyz="0.022 -0.025 -0.0599" rpy="0 0 0"/>
+  <parent link="limb4_v1_1"/>
+  <child link="limb5_v1_1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="rev16" type="continuous">
+  <origin xyz="0.022 -0.025 -0.0599" rpy="0 0 0"/>
+  <parent link="limb4_v1__3__1"/>
+  <child link="limb5_v1__1__1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="rev17" type="continuous">
+  <origin xyz="0.022 -0.025 -0.0599" rpy="0 0 0"/>
+  <parent link="limb4_v1__1__1"/>
+  <child link="limb5_v1__2__1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="rev18" type="continuous">
+  <origin xyz="0.022 -0.025 -0.0599" rpy="0 0 0"/>
+  <parent link="limb4_v1__2__1"/>
+  <child link="limb5_v1__3__1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<ros2_control name="urdf2_system" type="system">
+  <hardware>
+    <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+  </hardware>
+  <joint name="rev1">
+    <command_interface name="velocity">
+      <param name="min">-10</param>
+      <param name="max">10</param>
+    </command_interface>
+    <state_interface name="velocity"/>
+    <state_interface name="position"/>
+  </joint>
+  <joint name="rev2">
+    <command_interface name="velocity">
+      <param name="min">-10</param>
+      <param name="max">10</param>
+    </command_interface>
+    <state_interface name="velocity"/>
+    <state_interface name="position"/>
+  </joint>
+</ros2_control>
+
+</robot>
