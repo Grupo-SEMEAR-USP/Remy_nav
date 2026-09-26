@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'navegation'
+package_name = 'remy_navigation'
 
 setup(
     name=package_name,
@@ -23,12 +23,12 @@ setup(
     license='MIT',
     entry_points={
         'console_scripts': [
-                        'laser_to_pointcloud = navegation.laser_to_pointcloud:main',
-                        'ps4_teleop_node = navegation.ps4_teleop_node:main',
-                        'joystick_reader = navegation.joystick_reader:main',
-                        'serial_controller = navegation.serial_controller:main',
-                        'odom_pub = navegation.odom_pub:main',
-                        'pid_converter = navegation.pid_converter:main',
+                        'laser_to_pointcloud = remy_navigation.laser_to_pointcloud:main',
+                        'ps4_teleop_node = remy_navigation.ps4_teleop_node:main',
+                        'joystick_reader = remy_navigation.joystick_reader:main',
+                        'serial_controller = remy_navigation.serial_controller:main',
+                        'odom_pub = remy_navigation.odom_pub:main',
+                        'pid_converter = remy_navigation.pid_converter:main',
             ],
     },
 )
