@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'urdf2_description'
+package_name = 'remy_description'
 
 setup(
     name=package_name,
