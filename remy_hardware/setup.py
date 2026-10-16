@@ -25,7 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'cmd_vel_to_serial = remy_hardware.cmd_vel_to_serial:main',
-            'cmd_vel = remy_hardware.cmd_vel:main',
+            'wheel_odometry = remy_hardware.wheel_odometry:main',
         ],
     },
 )

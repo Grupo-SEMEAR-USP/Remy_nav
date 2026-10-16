@@ -6,7 +6,7 @@
 <gazebo>
   <plugin filename="gz_ros2_control-system"
           name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-    <parameters>$(find urdf2_description)/config/controllers.yaml</parameters>
+    <parameters>$(find remy_description)/config/controllers.yaml</parameters>
   </plugin>
 </gazebo>
 

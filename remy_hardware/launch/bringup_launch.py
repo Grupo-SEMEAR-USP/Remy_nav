@@ -55,7 +55,7 @@ def generate_launch_description():
     # antes aqui era o esp bridge
     odometry_node = Node(
         package='remy_hardware',
-        executable='cmd_vel', 
+        executable='wheel_odometry', 
         name='odometry_node'
     )
 

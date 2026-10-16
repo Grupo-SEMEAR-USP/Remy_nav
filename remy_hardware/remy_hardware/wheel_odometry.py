@@ -96,17 +96,19 @@ class OdometryNode(Node):
         
         odom.twist.twist.linear.x = v
         odom.twist.twist.angular.z = w
-        self.odom_pub.publish(odom)
 
-        # Atualizar a árvore de transformadas (TF2) odom -> base_footprint
-        t = TransformStamped()
-        t.header.stamp = stamp.to_msg()
-        t.header.frame_id = 'odom'
-        t.child_frame_id = 'base_footprint'
-        t.transform.translation.x = self.x
-        t.transform.translation.y = self.y
-        t.transform.rotation = q
-        self.tf_broadcaster.sendTransform(t)
+        # Covariâncias
+        odom.pose.covariance[0] = 0.01     # x
+        odom.pose.covariance[7] = 0.01     # y
+        odom.pose.covariance[35] = 0.03    # yaw
+        odom.twist.covariance[0] = 0.01    # vx
+        odom.twist.covariance[35] = 0.03   # vyaw
+        # z, roll, pitch (não usados em 2D): valor alto
+        for i in (14, 21, 28):
+            odom.pose.covariance[i] = 1e6
+            odom.twist.covariance[i] = 1e6
+
+        self.odom_pub.publish(odom)
 
 def main(args=None):
     rclpy.init(args=args)

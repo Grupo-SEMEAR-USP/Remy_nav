@@ -1,76 +1,79 @@
 ekf_filter_node:
   ros__parameters:
-    use_sim_time: true
+    use_sim_time: false
     frequency: 30.0
     sensor_timeout: 0.1
-    two_d_mode: true  # Ativar para robô diferencial
+    two_d_mode: true
     print_diagnostics: true
-    
-    # Frame names
+    debug: false
+
     map_frame: map
     odom_frame: odom
-    base_link_frame: base_link
-    base_link_frame_output: base_link
+    base_link_frame: base_footprint
     world_frame: odom
-    
-    # Odometry configuration (wheel odometry)
+    publish_tf: true
+
+    # Odometria das rodas: vx e vyaw
     odom0: /odom
-    odom0_config: [true, true, false,
-                   false, false, true,
-                   false, false, false,
-                   false, false, true,
-                   false, false, false]
+    odom0_config: [false, false, false,   # x,     y,      z       (posição)
+                   false, false, false,   # roll,  pitch,  yaw     (orientação)
+                   true,  false, false,   # vx,    vy,     vz      (velocidade linear)
+                   false, false, true,    # vroll, vpitch, vyaw    (velocidade angular)
+                   false, false, false]   # ax,    ay,     az      (aceleração linear)
     odom0_differential: false
     odom0_relative: false
     odom0_queue_size: 10
-    
-    # IMU configuration
-    imu0: /imu
-    imu0_config: [false, false, false,
-                  true, true, true,
-                  false, false, false,
-                  true, true, true,
-                  false, false, false]
-    imu0_differential: false
-    imu0_relative: false
-    imu0_queue_size: 10
-    imu0_remove_gravitational_acceleration: true
-    
-    # Second odometry source (lidar odometry)
-    odom1: /scan_odom
-    odom1_config: [true, true, false,
-                   false, false, true,
-                   false, false, false,
-                   false, false, false,
-                   false, false, false]
-    odom1_differential: false
-    odom1_relative: false
-    odom1_queue_size: 10
-    
-    # TF settings
-    publish_tf: true
-    tf_prefix: ""
-    
-    # Diagnostic and debug
-    print_diagnostics: true
-    debug: false
-    
-    # Process noise covariance - TODOS os valores como floats (com .0)
-    process_noise_covariance: [0.05, 0.0, 0.0, 0.0, 0.0, 0.0,
-                               0.0, 0.05, 0.0, 0.0, 0.0, 0.0,
-                               0.0, 0.0, 0.01, 0.0, 0.0, 0.0,
-                               0.0, 0.0, 0.0, 0.03, 0.0, 0.0,
-                               0.0, 0.0, 0.0, 0.0, 0.03, 0.0,
-                               0.0, 0.0, 0.0, 0.0, 0.0, 0.1]
-    
-    # Initial estimate covariance - TODOS os valores como floats (com .0)
-    initial_estimate_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                 0.0, 0.1, 0.0, 0.0, 0.0, 0.0,
-                                 0.0, 0.0, 0.1, 0.0, 0.0, 0.0,
-                                 0.0, 0.0, 0.0, 0.1, 0.0, 0.0,
-                                 0.0, 0.0, 0.0, 0.0, 0.1, 0.0,
-                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.1]
-    
-    # Other parameters
-    gravitational_acceleration: 9.80665
-    history_length: 0.0
+
+    # Odometria do lidar (rf2o): descomentar só se o yaw das rodas derivar muito
+    # odom1: /odom_rf2o
+    # odom1_config: [false, false, false,
+    #                false, false, false,
+    #                true,  false, false,
+    #                false, false, true,
+    #                false, false, false]
+    # odom1_queue_size: 10
+
+    # IMU (descomentar quando a RealSense chegar): só vyaw
+    # imu0: /imu
+    # imu0_config: [false, false, false,
+    #               false, false, false,
+    #               false, false, false,
+    #               false, false, true,
+    #               false, false, false]
+    # imu0_differential: false
+    # imu0_relative: false
+    # imu0_queue_size: 10
+
+    process_noise_covariance: [
+      0.05, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.05, 0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.06, 0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.03, 0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.03, 0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.06, 0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.025, 0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.025, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.04, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.01, 0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.01, 0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.02, 0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.015]
+
+    initial_estimate_covariance: [
+      1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,    0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9, 0.0,
+      0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0e-9]

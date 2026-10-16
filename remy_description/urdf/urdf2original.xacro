@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <robot name="urdf2" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="$(find urdf2_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find urdf2_description)/urdf/urdf2.trans" />
-<xacro:include filename="$(find urdf2_description)/urdf/urdf2.gazebo" />
+<xacro:include filename="$(find remy_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find remy_description)/urdf/urdf2.trans" />
+<xacro:include filename="$(find remy_description)/urdf/urdf2.gazebo" />
 
 
 <link name="base_footprint"/>
@@ -23,14 +23,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -44,14 +44,14 @@
   <visual>
     <origin xyz="-0.0215 0.190948 -0.125363" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb2_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb2_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0215 0.190948 -0.125363" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb2_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb2_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -65,14 +65,14 @@
   <visual>
     <origin xyz="-0.0325 -0.0265 -1.500001" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb3_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb3_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0325 -0.0265 -1.500001" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb3_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb3_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -89,14 +89,14 @@
   <visual>
     <origin xyz="-0.2235 -0.0 -0.074" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb1_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.2235 -0.0 -0.074" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb1_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -110,14 +110,14 @@
   <visual>
     <origin xyz="0.2245 0.0 -0.074" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb1_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.2245 0.0 -0.074" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb1_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb1_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -131,14 +131,14 @@
   <visual>
     <origin xyz="0.09 0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.09 0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -152,14 +152,14 @@
   <visual>
     <origin xyz="-0.09 -0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.09 -0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -173,14 +173,14 @@
   <visual>
     <origin xyz="0.09 -0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.09 -0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -194,14 +194,14 @@
   <visual>
     <origin xyz="-0.09 0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.09 0.12 -0.093" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb4_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb4_v1__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -215,14 +215,14 @@
   <visual>
     <origin xyz="0.068 0.145 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.068 0.145 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -236,14 +236,14 @@
   <visual>
     <origin xyz="-0.112 0.145 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.112 0.145 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -257,14 +257,14 @@
   <visual>
     <origin xyz="-0.112 -0.095 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.112 -0.095 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -278,14 +278,14 @@
   <visual>
     <origin xyz="0.068 -0.095 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.068 -0.095 -0.0331" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find urdf2_description)/meshes/limb5_v1__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find remy_description)/meshes/limb5_v1__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
